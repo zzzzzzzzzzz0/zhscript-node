@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>搜 - 电影管理器</title>
+<style type="text/css">@import url(1.css);</style>
+<script src="1.js"></script>
+<script src="zhugeshow.js"></script>
+<style type="text/css">@import url(2.css);</style>
+<script src="2.js"></script>
+<script>
+ipc_.on('sou.html', function(event, title, path, pic, i) {
+	list_add(title, path, pic, i)
+})
+
+var text_ = ''
+function submit__(text) {
+	text_ = text
+	list_start(function() {
+		ipc_.send('index.html', text, 'sou', win_.id)
+	})
+}
+function apply__() {
+	ipc_.send('index.html', text_, 'sou-apply')
+	window.close()
+}
+</script>
+</head>
+<body>
+<div id=toolbar class=toolbar>
+<div class=toolbar-1>
+<form onsubmit="submit__(text.value);return false">
+<input type=text name=text>
+<input type=submit value="搜">
+</form>
+</div>
+<div class=toolbar-1>
+<a href="javascript:apply__()" class=btn>应用</a>
+</div>
+</div>
+<div class=toolbar></div>
+<div style="height:20px;"></div>
+<div id=list></div>
+</body>
+</html>

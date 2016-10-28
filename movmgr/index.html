@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>电影管理器</title>
+<style type="text/css">@import url(1.css);</style>
+<script src="1.js"></script>
+<script src="zhugeshow.js"></script>
+<style type="text/css">@import url(2.css);</style>
+<script src="2.js"></script>
+<script>
+const z$ = require('bindings')('zhscript')
+z$('.', __dirname + '/bin/zhscript/')
+z$('加载def.zs')
+z$('加载def2.zs')
+
+ipc_.on('index.html', function(event, arg1, arg2, arg3, arg4) {
+	switch(arg2) {
+	case 'sou':
+		z$('搜关键字‘参数栈’', arg1, function(title, path, pic, i) {
+			ipc_.send('sou.html', arg3, title, path, pic, i)
+		})
+		break
+	case 'sou-apply':
+		list_start()
+		z$('搜关键字‘参数栈’', arg1, function(title, path, pic, i) {
+			list_add(title, path, pic, i)
+		})
+		break
+	default:
+		eval(arg1)
+		break
+	}
+})
+
+var i_ = 0
+function play__(player) {
+	select__(function(path) {
+		if(path.checked) {
+			i_ = path.title
+			z$('播放由‘参数栈’', player, path.value)
+		}
+	})
+}
+
+var player1_
+function play_i__(title) {
+	var path = z$('‘视频' + i_ + '’')
+	nn__(z$('‘' + path + '标题’'), title)
+	z$('播放由‘参数栈’', player1_, path)
+	ipc_.send('window_min', win_.id)
+}
+
+function rand1__() {
+	var path2 = e_cn__('path')
+	var max = path2.length
+	if(max == 0) {
+		return
+	}
+	var i = Math.floor(Math.random() * max)
+	i_ = path2[i].title
+	play_i__((i + 1) + ' / ' + max)
+}
+
+function next__() {
+	var max = z$('‘视频量’')
+	if(max == 0) {
+		return
+	}
+	if(++i_ > max) {
+		i_ = max
+	}
+	play_i__(i_ + ' / ' + max)
+}
+
+function shot__() {
+	select__(function(path) {
+		if(path.checked) {
+			var ret = z$('配图给‘参数栈’', path.value, nn__)
+			if(ret) {
+				e__('pic' + path.title).src = ret
+			}
+		}
+	})
+}
+
+function window_open(name, code, o) {
+	o.typ = 'info'
+	o.info = z$(code)
+	ipc_.send('window_open', name + '.html', o)
+}
+
+function window_open_select(name, o) {
+	select__(function(path) {
+		if(path.checked) {
+			window_open(name, '视频信息' + path.title, o)
+		}
+	})
+}
+</script>
+</head>
+<body>
+<div id=toolbar class=toolbar>
+<div id=player class=toolbar-1></div>
+<div class=toolbar-1>
+<a href="javascript:window_open_select('info',{max:true})" class=btn>详情</a>
+<a href="javascript:shot__()" class=btn>配图</a>
+<a href="javascript:window_open_select('delete',{})" class=btn>删除</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:select_all(true)" class=btn>全选</a>
+<a href="javascript:select_all(false)" class=btn>取消</a>
+<a href="javascript:select_all(null)" class=btn>反选</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:window_open('sou','',{max:true})" class=btn>搜</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:next__()" class=btn>下集</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:rand1__()" class=btn>随便一个</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:location.reload()" class=btn>刷新</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:window_open('config','配置文件信息',{})" class=btn>配置</a>
+</div>
+</div>
+<div class=toolbar></div>
+<div style="height:20px;"></div>
+<div id=list></div>
+</body>
+
+<script>
+function add_player(name, href) {
+	var a = new__('a')
+	a.className = 'btn'
+	a.href = 'javascript:play__("' + s2js__(href) + '")'
+	htm__(a, name)
+	add__(a, 'player')
+	if(!player1_)
+		player1_ = href
+}
+
+list_start(function() {
+	z$(		[], '加载list.zs',
+			[], '加载list2.zs、‘参数栈’', list_add)
+})
+z$('加载player.zs、‘参数栈’', add_player)
+if(htm__('player').length == 0) {
+	nn__('未找到支持的播放器')
+}
+</script>
+</html>

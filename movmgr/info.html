@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>详情 - 电影管理器</title>
+<style type="text/css">@import url(1.css);
+.left {
+	text-align:left;
+}
+</style>
+<script src="1.js"></script>
+<script>
+ipc_.on('info', function(event, a) {
+	for(var i = 1; i < a.length; i++) {
+		switch(i) {
+		case 1: case 2:
+			htm__('d' + i, a[i])
+			continue
+		case 6:
+			e__('pic').src = a[i]
+			continue
+		case 3: case 4: case 5:
+			continue
+		}
+		htm__('d7', '<img src="' + a[i] + '">', true)
+	}
+})
+</script>
+</head>
+<body>
+<div class="item-1 item-2" style="padding:10px;">
+<div><img id=pic></div>
+<div><span id=d1 class=title-1></span></div>
+<pre id=d2 class="left title-1"></pre>
+<div id=d7></div>
+</div>
+</body>
+</html>

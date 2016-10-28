@@ -1,0 +1,21 @@
+img {
+	max-height:200px;
+	max-width:200px;
+}
+.pic {
+	width:200px;
+	height:200px;
+	vertical-align:middle;
+	display:table-cell;
+}
+.item {
+	float:left;
+	height:270px;
+}
+.title {
+	width:200px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	font-size:12px;
+}

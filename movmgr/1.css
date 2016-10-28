@@ -1,0 +1,37 @@
+body {
+	background-image:url(bin/img/bg.jpg); background-repeat:repeat;
+}
+a {
+	color:#000;
+	text-decoration:none;
+}
+.item-1 {
+	text-align:center;
+}
+.item-2 {
+	background-color:rgba(0,0,0,0.3);
+}
+.title-1 {
+	background-color:#fff;
+}
+.title-2 {
+	padding:10px;
+}
+#toolbar {
+	position:fixed;
+	background-color:#fff;
+}
+.toolbar-1 {
+	border:2px dashed #000;
+	background-color:#fff;
+	padding:10px;
+	margin:2px;
+	float:left;
+}
+.toolbar {
+	height:50px;
+}
+.btn {
+	padding:5px;
+	font-size:14px;
+}

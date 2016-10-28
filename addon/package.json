@@ -1,0 +1,13 @@
+{
+  "name": "zhscript",
+  "version": "0.0.1",
+  "description": "中文脚本",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+  },
+  "gypfile": true,
+  "dependencies": {
+    "bindings": "~1.2.1"
+  }
+}

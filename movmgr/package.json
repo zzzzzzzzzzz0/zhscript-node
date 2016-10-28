@@ -1,0 +1,14 @@
+{
+  "name": "movmgr",
+  "version": "0.0.2",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "zhscript": "x"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  }
+}

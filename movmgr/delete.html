@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>删除 - 电影管理器</title>
+<style type="text/css">@import url(1.css);</style>
+<script src="1.js"></script>
+<script>
+var i_
+
+ipc_.on('info', function(event, a) {
+	var list = e__('list')
+	i_ = a[0]
+	for(var i = 4; i < a.length; i++) {
+		if(a[i] != '') {
+			htm__(list, a[i] + '\n', true)
+		}
+	}
+})
+
+function yes__() {
+	ipc_.send('index.html', 'z$("清除视频' + i_ + '");' + 'var e=e__("item" + ' + i_ + ');e.parentNode.removeChild(e)')
+	window.close()
+}
+</script>
+</head>
+<body>
+<div id=toolbar class=toolbar>
+<div class=toolbar-1>
+<a href="javascript:yes__()" class=btn>确定</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:window.close()" class=btn>放弃</a>
+</div>
+</div>
+<div class=toolbar></div>
+<div style="height:20px;"></div>
+<div class="item-2" style="padding:10px;">
+<pre id=list class="title-1"></pre>
+</div>
+</body>
+</html>

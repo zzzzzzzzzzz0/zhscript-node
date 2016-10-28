@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>配置 - 电影管理器</title>
+<style type="text/css">@import url(1.css);
+textarea {
+	width:100%;
+}
+</style>
+<script src="1.js"></script>
+<script>
+ipc_.on('info', function(event, a) {
+	for(var i = 0; i < a.length; i++) {
+		htm__('ta' + i, a[i])
+	}
+})
+
+function save__() {
+	ipc_.send('index.html', 'z$("保存到配置文件下原样' + s2js__(e__('ta0').value) + '上原样、下原样' + s2js__(e__('ta1').value) + '上原样");'
+		+ 'location.reload()')
+	window.close()
+}
+</script>
+</head>
+<body>
+<div id=toolbar class=toolbar>
+<div class=toolbar-1>
+<a href="javascript:save__()" class=btn>保存并应用</a>
+</div>
+<div class=toolbar-1>
+<a href="javascript:window.close()" class=btn>放弃</a>
+</div>
+</div>
+<div class=toolbar></div>
+<div style="height:20px;"></div>
+<div class="item-2" style="padding:10px;">
+<span class="title-1">目录配置</span>
+<textarea id=ta0 rows="10"></textarea>
+<span class="title-1">播放器配置</span>
+<textarea id=ta1 rows="20"></textarea>
+</div>
+</body>
+</html>
