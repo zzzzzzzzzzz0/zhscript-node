@@ -33,19 +33,20 @@ ipc_.on('index.html', function(event, arg1, arg2, arg3, arg4) {
 	}
 })
 
-var i_ = 0
 function play__(player) {
 	select__(function(path) {
 		if(path.checked) {
-			i_ = path.title
 			z$('播放由‘参数栈’', player, path.value)
+			ipc_.send('window_min', win_.id)
+			i1_ = path.title
+			player1_ = player
 		}
 	})
 }
 
-var player1_
+var i1_ = 0, player1_
 function play_i__(title) {
-	var path = z$('‘视频' + i_ + '’')
+	var path = z$('‘视频' + i1_ + '’')
 	nn__(z$('‘' + path + '标题’'), title)
 	z$('播放由‘参数栈’', player1_, path)
 	ipc_.send('window_min', win_.id)
@@ -58,7 +59,7 @@ function rand1__() {
 		return
 	}
 	var i = Math.floor(Math.random() * max)
-	i_ = path2[i].title
+	i1_ = path2[i].title
 	play_i__((i + 1) + ' / ' + max)
 }
 
@@ -67,10 +68,10 @@ function next__() {
 	if(max == 0) {
 		return
 	}
-	if(++i_ > max) {
-		i_ = max
+	if(++i1_ > max) {
+		i1_ = max
 	}
-	play_i__(i_ + ' / ' + max)
+	play_i__(i1_ + ' / ' + max)
 }
 
 function shot__() {
